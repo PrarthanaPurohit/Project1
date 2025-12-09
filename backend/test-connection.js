@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const uri = 'mongodb+srv://prarthanapurohit03:KuxnILfkCKym1bQi@cluster0.dobence.mongodb.net/showcase?retryWrites=true&w=majority';
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  console.error('❌ MONGODB_URI not found in .env file');
+  process.exit(1);
+}
 
 console.log('Attempting to connect to MongoDB Atlas...');
 
